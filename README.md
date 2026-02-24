@@ -1,103 +1,59 @@
-LLM Fine-Tuning with LoRA + Streamlit Demo
-Overview
+# LLM Fine-Tuning with LoRA + Streamlit Demo
 
-This project demonstrates parameter-efficient fine-tuning of a decoder-only language model using LoRA (Low-Rank Adaptation), followed by deployment as an interactive chatbot using Streamlit.
+## Overview
 
-The goal was to understand:
+This project demonstrates parameter-efficient fine-tuning of a decoder-only language model using LoRA (Low-Rank Adaptation) and deployment as an interactive chatbot using Streamlit.
 
-How LoRA reduces trainable parameters
+## Objectives
 
-How fine-tuning affects response behavior
+* Reduce trainable parameters using LoRA
+* Analyze how fine-tuning alters response behavior
+* Convert a trained model into a simple web-based interface
 
-How to turn a trained model into a simple web-based interface
+This is a learning-focused implementation and is not production-ready.
+## Model & Training
+Base Model: Add model name here
+Fine-Tuning Method: LoRA via PEFT
+Trainable Parameters: < 1% of total parameters
 
-This is a learning/demo project.
+Training was conducted in:
+```
+FineTuningTask.ipynb
+```
+## Training Workflow
+1. Load pretrained model
+2. Attach LoRA adapters
+3. Fine-tune on custom dataset
+4. Save adapter weights
+5. Run inference validation
 
-Tech Stack
+## Streamlit Demo Application
 
-Python
+The fine-tuned model is wrapped in a lightweight chatbot interface.
 
-PyTorch
+* Features
+* Text input
+* Model-generated responses
+* Prompt formatting
 
-Hugging Face Transformers
+## Demo Evaluation
 
-PEFT (LoRA)
+### Three test queries were used:
+* Standard prompt
+* Structured question
+* Ambiguous or edge-case input
 
-Streamlit
+## Key Observations
 
-Model & Training
+* LoRA enables efficient fine-tuning on limited hardware.
+* Prompt structure significantly influences output quality.
+* Deployment reveals usability issues not visible during notebook testing.
+* Inference latency impacts user experience
+These demonstrate changes in response consistency and tone after fine-tuning.
+Simple interactive layout
 
-Base model: (add your base model name here, e.g., GPT-Neo 125M)
+## Limitations
 
-Fine-tuning method: LoRA via PEFT
-
-Training setup: Parameter-efficient fine-tuning (<1% trainable parameters)
-
-Objective: Improve response style/behavior on a specific dataset
-
-Training was done in a Jupyter notebook (training_notebook.ipynb).
-
-Key steps:
-
-Load pretrained model from Hugging Face
-
-Apply LoRA adapters
-
-Fine-tune on custom dataset
-
-Save trained adapter weights
-
-Run inference tests
-
-Streamlit Demo App
-
-The fine-tuned model is wrapped in a simple chatbot interface built with Streamlit.
-
-Features:
-
-User text input
-
-Model-generated response
-
-Basic prompt formatting
-
-Lightweight demo interface
-
-Run locally:
-
-pip install -r requirements.txt
-streamlit run app.py
-Example Demo
-
-The demo video includes 3 test queries to evaluate:
-
-Standard prompt
-
-Structured question
-
-Slightly ambiguous or edge-case input
-
-This helps observe how fine-tuning changes response consistency and tone.
-
-Project Structure
-├── training_notebook.ipynb
-├── app.py
-├── requirements.txt
-├── README.md
-What I Learned
-
-LoRA makes fine-tuning feasible on limited hardware.
-
-Prompt structure strongly influences output quality.
-
-Turning a model into an interface reveals usability issues that are not obvious during notebook testing.
-
-Inference speed and response formatting matter for user experience.
-
-Limitations
-
-This is a demo-level chatbot, not production-ready.
-
-No advanced guardrails or moderation layer.
-
-Limited evaluation and benchmarking.
+* Demo-level chatbot
+* No advanced safety or moderation layer
+* Limited quantitative evaluation
